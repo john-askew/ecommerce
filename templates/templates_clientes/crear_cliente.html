@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+   
+
+<h1 class= "contenedorFormulario" style ="color: white;" >Crear Cliente</h1>
+</p>
+
+<div>
+
+    {% if form %}
+        <h2 style="margin-left:30rem">Complete los campos del nuevo Cliente</h2>
+        <form action="" method="POST" style="margin-left:40rem;margin-top:7rem">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <input type="submit" , value="Enviar">
+        </form>
+    {% endif %}
+</div>
+
+{% endblock %}

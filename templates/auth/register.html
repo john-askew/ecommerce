@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+{% block contenido %}
+
+
+<h1> Registro de Usuario</h1>
+
+<h2 style="margin-left: 30rem"> Complete los campos</h2>
+{{ mensaje }}
+<div class="card" style=" width: 120rem; display: inline-block">
+<form action='' method="POST" style= "margin-left: 40rem;margin-top: 7 rem">    
+{% csrf_token %}
+<table>
+    {{ form.as_table }}
+
+</table>
+<input type="submit" value="Enviar" style="margin-left: 40rem;margin-top: 7 rem">
+</form>
+</div>
+
+{% endblock %}

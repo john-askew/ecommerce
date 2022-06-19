@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% load static %}
+
+
+{% block contenido %}
+
+<div class="d-flex" style="margin-top:5rem; margin-left:7rem">
+
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <img src="{{ object.imagen_documento.url }}" class="img-thumbnail">
+            <h5 class="card-title">Nombre: {{object.nombre}} {{object.apellido}}</h5>
+            <p class="card-text">Correo: {{object.email}}</p>
+            <p class="card-text">Direccion: {{object.direccion}}</p>
+            <p class="card-text">Ciudad: {{object.ciudad}}</p>
+            <p class="card-text">Estado: {{object.estado}}</p>
+            <p class="card-text">Pais: {{object.pais}}</p>
+            <p class="card-text">CP: {{object.cp}}</p>
+            <p class="card-text">Fecha de Alta: {{object.fecha_registro}}</p>
+            <a href="/clientes/update_cliente/{{object.id}}/" class="btn btn-primary">Editar</a>
+            <a href="/clientes/eliminar_cliente/{{object.id}}/" class="btn btn-danger">Eliminar</a>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
