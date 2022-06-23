@@ -15,6 +15,7 @@ class CategoriaProducto(models.Model):
         return self.nombre
 
 class Producto(models.Model):
+    codigo = models.CharField(max_length=20, unique=True)
     nombre = models.CharField('Nombre', max_length=100)
     precio = models.DecimalField('Precio',max_digits=6, decimal_places=2)
     categoria = models.ForeignKey(CategoriaProducto, on_delete=models.CASCADE, default=1)
