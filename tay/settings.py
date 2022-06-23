@@ -31,8 +31,9 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-MY_APPS = ['ProductosApp',
-        'ClientesApp',
+MY_APPS = ['apps.ProductosApp',
+        'apps.ClientesApp',
+        'apps.TiendaApp',
         ]
 
 THIRD_APPS = []
@@ -70,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.TiendaApp.context_processor.importe_total_carro'
             ],
         },
     },
@@ -138,3 +140,10 @@ MEDIA_ROOT = BASE_DIR / 'media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/login/'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ventasestilotay@gmail.com'
+EMAIL_HOST_PASSWORD = 'hckppbkpvqqriaqs'

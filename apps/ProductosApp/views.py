@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from ProductosApp.models import Producto
+from apps.ProductosApp.models import Producto
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
@@ -35,7 +35,7 @@ class EliminarProducto(DeleteView):
 class UpdateProducto(UpdateView):
     model = Producto
     template_name = 'templates_productos/update_producto.html'
-    fields = '__all__'
+    fields = ['nombre', 'precio', 'categoria', 'stock', 'descripcion']
 
     def get_success_url(self):
         return reverse('detalle_producto', kwargs = {'pk':self.object.pk})

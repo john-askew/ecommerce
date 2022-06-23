@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block contenido %}
+
+<div class="container">
+
+  <div style="float:right">
+  
+    <p style="color: white;"> Total: ${{ importe_total_carro }}</p>
+    
+  </div>
+
+  {% include 'carro/widget.html' %}
+
+</div>
+
+{% for producto in productos %}
+
+<div class="card" style="width: 18rem; display: inline-block">
+    <img src="{{ producto.object.imagenes.imagen }}", width="200", height="140">
+    <div class="card-body">
+      <h5 class="card-title">{{ producto.nombre }}</h5>
+      <p class="card-text">{{ producto.descripcion }}</p>
+      <h5 class="card-title">{{ producto.precio }}</h5>
+      <a href="#" class="btn btn-primary">Agregar al Pedido</a>
+    </div>
+  </div>
+
+{% endfor %}
+
+{% endblock %}

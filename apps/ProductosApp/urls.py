@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib import admin
 from django.urls import path, include
-from ProductosApp.views import CrearProducto, ListarProductos, DetalleProducto, EliminarProducto, UpdateProducto 
+from apps.ProductosApp.views import CrearProducto, ListarProductos, DetalleProducto, EliminarProducto, UpdateProducto 
 from django.conf import settings
 from django.conf.urls.static import static
 from tay.settings import MEDIA_ROOT, MEDIA_URL

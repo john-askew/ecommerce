@@ -4,8 +4,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 from tay.views import login_view, index, logout_view, register_view, buscar
-from .settings import MEDIA_ROOT, MEDIA_URL
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,9 +12,9 @@ urlpatterns = [
     path('logout/', logout_view, name = "logout"),
     path('register/', register_view, name = "register"),
     path('buscar/', buscar, name = "buscar"),
-    path('productos/', include('ProductosApp.urls')),
-    path('clientes/', include('ClientesApp.urls')),
+    path('productos/', include('apps.ProductosApp.urls')),
+    path('clientes/', include('apps.ClientesApp.urls')),
+    path('tienda/', include('apps.TiendaApp.urls')),
 
-]#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

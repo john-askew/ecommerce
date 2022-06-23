@@ -6,14 +6,11 @@
 {% block contenido %}
    
 
-<h1 class= "contenedorFormulario" style ="color: white;" >Cliente Eliminado</h1>
-</p>
+<h3 style="color: red">Estas por eliminar el Cliente {{object.nombre}} {{object.apellido}}, estas seguro?</h3>
 
-<div>
-    <li class="nav-item active">
-        <a class="nav-link" href="/index/">Incio <span class="sr-only">(current)</span></a>
-    </li>
-
-</div>
+<form method = "POST">
+    {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Eliminar</button>
+</form>
 
 {% endblock %}

@@ -12,8 +12,16 @@
             <h5 class="card-title">{{producto.nombre}}</h5>
             <p class="card-text">{{producto.descripcion}}</p>
             <p class="card-text">${{producto.precio}}</p>
-            {% if producto.imagen %}
-            <img src="{{ producto.imagen.url }}" class="img-thumbnail">
+            
+            {% if producto.imagenes %}
+
+            {% for imagen in producto.imagenes.all %}
+
+            <img src= '{{ imagen.url }}'  class="img-thumbnail">
+               
+            
+            {% endfor %}
+        
             {% endif %}
             <p class="card-text">Stock Actual: {{producto.stock}}</p>
             {% if user.is_superuser %}

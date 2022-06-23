@@ -4,7 +4,10 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from tay.forms import UserRegisterForm
-from ProductosApp.models import Producto
+from apps.ProductosApp.models import Producto
+from apps.ClientesApp.models import Cliente
+from apps.ClientesApp.forms import ClienteForm
+from django.contrib.auth.models import User
 
 
 def login_view(request):
@@ -76,3 +79,8 @@ def buscar(request):
     except:
         context = {'errors':'No se encontro el producto'}
         return render(request, 'buscar.html', context = context)
+
+
+
+
+   

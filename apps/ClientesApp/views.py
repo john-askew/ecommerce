@@ -1,10 +1,11 @@
 import re
 from urllib import request
 from django.shortcuts import render, redirect
-from ClientesApp.models import Cliente
+from apps.ClientesApp.models import Cliente
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse
+from apps.ClientesApp.models import FAQs
 
 
 class ListarClientes(ListView):
@@ -22,16 +23,16 @@ class CrearCliente(LoginRequiredMixin, CreateView):
     fields = '__all__'
 
     def get_success_url(self):
-        return render(request, 'clientes/detalle_cliente/{}'.format(self.object.id))
+        return reverse('detalle_cliente', kwargs={'pk': self.object.id})
 
-class EliminarCliente(DeleteView):
+class EliminarCliente(LoginRequiredMixin, DeleteView):
     model = Cliente
     template_name = 'templates_clientes/eliminar_cliente.html'
 
     def get_success_url(self):
         return reverse('clientes')
 
-class UpdateCliente(UpdateView):
+class UpdateCliente(LoginRequiredMixin, UpdateView):
     model = Cliente
     template_name = 'templates_clientes/update_cliente.html'
     fields = '__all__'
@@ -39,3 +40,9 @@ class UpdateCliente(UpdateView):
 
     def get_success_url(self):
         return reverse('detalle_cliente', kwargs = {'pk':self.object.pk})
+
+
+def ListFAQs(request):
+     faqs = FAQs.objects.all()
+     context = {'faqs': faqs}
+     return render(request, 'base.html', context=context)

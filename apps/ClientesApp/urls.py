@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib import admin
 from django.urls import path, include
-from ClientesApp.views import CrearCliente, ListarClientes, DetalleCliente, EliminarCliente, UpdateCliente
+from apps.ClientesApp.views import CrearCliente, ListarClientes, DetalleCliente, EliminarCliente, UpdateCliente
 from django.conf import settings
 from django.conf.urls.static import static
 from tay.settings import MEDIA_ROOT, MEDIA_URL
